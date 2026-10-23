@@ -241,29 +241,21 @@ footer { background: var(--card); border-top: 1px solid var(--border); padding: 
 
   <div id="prefix-tool" class="tool-view"><div class="generator-grid">
     <div class="gen-box">
-      <label>Tryb / Kategoria Rangi</label>
-      <div class="fmt-bar">
-        <button class="fmt-btn active-fmt" id="modeStandard" data-mode="standard"><i class="fa-solid fa-square"></i> Zwykły Prefix</button>
-        <button class="fmt-btn" id="modeEnvelope" data-mode="envelope"><i class="fa-solid fa-envelope"></i> Envelope / Koperta</button>
-      </div>
-
-      <div id="subStyleGroup">
-        <label style="margin-top:10px">Wariant narożników</label>
-        <div class="fmt-bar">
-          <button class="fmt-btn active-fmt" id="styleClassic" data-style="classic">Klasyczny</button>
-          <button class="fmt-btn" id="styleRounded" data-style="rounded">Zaokrąglone rogi</button>
-        </div>
-      </div>
-
-      <label style="margin-top:10px">Nazwa rangi (A–Z, 0–9)</label>
+      <label>Nazwa rangi (A–Z, 0–9)</label>
       <input type="text" id="prefixName" class="gen-input" value="GRACZ" maxlength="10">
 
-      <label>Paleta kolorów (tło)</label><div class="color-palette" id="colorPalette"></div>
+      <label style="margin-top:5px">Styl narożników</label>
+      <div class="fmt-bar">
+        <button class="fmt-btn active-fmt" id="styleClassic" data-style="classic">Klasyczny</button>
+        <button class="fmt-btn" id="styleRounded" data-style="rounded">Zaokrąglone rogi</button>
+      </div>
+
+      <label style="margin-top:5px">Paleta kolorów (tło)</label><div class="color-palette" id="colorPalette"></div>
       <div class="color-inputs-grid">
-        <div><label>Tło główne</label><div class="color-picker-group"><input type="color" id="bgColor" value="#475569"><input type="text" id="bgColorText" value="#475569"></div></div>
+        <div><label>Tło</label><div class="color-picker-group"><input type="color" id="bgColor" value="#3b82f6"><input type="text" id="bgColorText" value="#3b82f6"></div></div>
         <div><label>Tekst</label><div class="color-picker-group"><input type="color" id="textColor" value="#ffffff"><input type="text" id="textColorText" value="#ffffff"></div></div>
-        <div><label>Cień tła</label><div class="color-picker-group"><input type="color" id="shadowColor" value="#1e293b"><input type="text" id="shadowColorText" value="#1e293b"></div></div>
-        <div id="wingColorContainer"><label>Boki Koperty</label><div class="color-picker-group"><input type="color" id="borderColor" value="#334155"><input type="text" id="borderColorText" value="#334155"></div></div>
+        <div><label>Cień tła</label><div class="color-picker-group"><input type="color" id="shadowColor" value="#1d4ed8"><input type="text" id="shadowColorText" value="#1d4ed8"></div></div>
+        <div><label>Obramowanie</label><div class="color-picker-group"><input type="color" id="borderColor" value="#1e40af"><input type="text" id="borderColorText" value="#1e40af"></div></div>
       </div>
     </div>
     <div class="gen-box">
@@ -469,7 +461,6 @@ Y:[[1,0,0,0,1],[0,1,0,1,0],[0,0,1,0,0],[0,0,1,0,0],[0,0,1,0,0]],Z:[[1,1,1,1,1],[
 '-':[[0,0,0],[0,0,0],[1,1,1],[0,0,0],[0,0,0]],' ':[[0,0],[0,0],[0,0],[0,0],[0,0]]};
 
 const zooms = [1,2,4,6,8,10]; let zi = 3;
-let currentMode = 'standard';
 let currentSubStyle = 'classic';
 
 const rc = $('rankCanvas'), rctx = rc.getContext('2d');
@@ -479,120 +470,48 @@ function drawRank(){
   const raw = $('prefixName').value || 'GRACZ';
   const text = [...raw.toUpperCase()].filter(c => F[c]).join('') || 'GRACZ';
   let tw = 0; for(const c of text) tw += F[c][0].length + 1; tw -= 1;
-  
+  const w = tw + 10, h = 12; 
+  rc.width = w; rc.height = h;
   const [bg, tc, sh, bd] = pf.map(p => p[0].value);
+  rctx.clearRect(0, 0, w, h);
 
-  if(currentMode === 'envelope') {
-    // KOPERTA z obrazka z wąskimi bokami i kółeczkami
-    const wingW = 7;
-    const centerW = tw + 8;
-    const w = centerW + (wingW * 2);
-    const h = 14;
-    rc.width = w; rc.height = h;
-    rctx.clearRect(0, 0, w, h);
-
-    // Boki / skrzydła (envelope)
-    rctx.fillStyle = bd;
-    rctx.fillRect(0, 3, wingW, 8);
-    rctx.fillRect(w - wingW, 3, wingW, 8);
-    
-    // Obramowanie skrzydła
-    rctx.fillStyle = '#111111';
-    rctx.fillRect(0, 2, wingW, 1);
-    rctx.fillRect(0, 11, wingW, 1);
-    rctx.fillRect(w - wingW, 2, wingW, 1);
-    rctx.fillRect(w - wingW, 11, wingW, 1);
-
-    // Kółeczka w skrzydłach
-    rctx.fillStyle = '#ffffff';
-    rctx.fillRect(2, 5, 3, 4);
-    rctx.fillRect(w - wingW + 2, 5, 3, 4);
-
-    // Środek - tło główne
-    rctx.fillStyle = bg;
-    rctx.fillRect(wingW, 1, centerW, 12);
-    
-    // Obramowanie środka
-    rctx.fillStyle = '#111111';
-    rctx.fillRect(wingW, 0, centerW, 1);
-    rctx.fillRect(wingW, 13, centerW, 1);
-    rctx.fillRect(wingW - 1, 1, 1, 12);
-    rctx.fillRect(wingW + centerW, 1, 1, 12);
-
-    // Cień dolny
-    rctx.fillStyle = sh;
-    rctx.fillRect(wingW, 11, centerW, 2);
-
-    let x = wingW + 4; const y = 4;
-    for(const c of text){
-      const m = F[c];
-      m.forEach((row, r) => row.forEach((v, cc) => { 
-        if(v){ 
-          rctx.fillStyle='#111111'; rctx.fillRect(x+cc, y+r+1, 1, 1); 
-          rctx.fillStyle=tc; rctx.fillRect(x+cc, y+r, 1, 1); 
-        } 
-      }));
-      x += m[0].length + 1;
-    }
+  if(currentSubStyle === 'classic') {
+    rctx.fillStyle = bd; rctx.fillRect(1, 0, w-2, h); rctx.fillRect(0, 1, w, h-2);
+    rctx.fillStyle = bg; rctx.fillRect(1, 1, w-2, h-2);
+    rctx.fillStyle = sh; rctx.fillRect(1, h-2, w-2, 1);
   } else {
-    // ZWYKŁY PREFIX
-    const w = tw + 10, h = 12; 
-    rc.width = w; rc.height = h;
-    rctx.clearRect(0, 0, w, h);
+    // Zaokrąglone rogi
+    rctx.fillStyle = bd; 
+    rctx.fillRect(1, 0, w-2, h); rctx.fillRect(0, 1, w, h-2);
+    rctx.clearRect(0, 0, 1, 1); rctx.clearRect(w-1, 0, 1, 1);
+    rctx.clearRect(0, h-1, 1, 1); rctx.clearRect(w-1, h-1, 1, 1);
 
-    if(currentSubStyle === 'classic') {
-      rctx.fillStyle = bd; rctx.fillRect(1, 0, w-2, h); rctx.fillRect(0, 1, w, h-2);
-      rctx.fillStyle = bg; rctx.fillRect(1, 1, w-2, h-2);
-      rctx.fillStyle = sh; rctx.fillRect(1, h-2, w-2, 1);
-    } else {
-      // Zaokrąglone rogi
-      rctx.fillStyle = bd; 
-      rctx.fillRect(1, 0, w-2, h); rctx.fillRect(0, 1, w, h-2);
-      rctx.clearRect(0, 0, 1, 1); rctx.clearRect(w-1, 0, 1, 1);
-      rctx.clearRect(0, h-1, 1, 1); rctx.clearRect(w-1, h-1, 1, 1);
-
-      rctx.fillStyle = bg; 
-      rctx.fillRect(1, 1, w-2, h-2);
-      rctx.fillStyle = sh; 
-      rctx.fillRect(1, h-2, w-2, 1);
-    }
-
-    let x = 5; const y = 3;
-    for(const c of text){
-      const m = F[c];
-      m.forEach((row, r) => row.forEach((v, cc) => { 
-        if(v){ 
-          rctx.fillStyle='#111111'; rctx.fillRect(x+cc, y+r+1, 1, 1); 
-          rctx.fillStyle=tc; rctx.fillRect(x+cc, y+r, 1, 1); 
-        } 
-      }));
-      x += m[0].length + 1;
-    }
+    rctx.fillStyle = bg; 
+    rctx.fillRect(1, 1, w-2, h-2);
+    rctx.fillStyle = sh; 
+    rctx.fillRect(1, h-2, w-2, 1);
   }
 
-  rc.style.width = (rc.width * zooms[zi]) + 'px'; 
-  rc.style.height = (rc.height * zooms[zi]) + 'px';
+  let x = 5; const y = 3;
+  for(const c of text){
+    const m = F[c];
+    m.forEach((row, r) => row.forEach((v, cc) => { 
+      if(v){ 
+        rctx.fillStyle='#111111'; rctx.fillRect(x+cc, y+r+1, 1, 1); 
+        rctx.fillStyle=tc; rctx.fillRect(x+cc, y+r, 1, 1); 
+      } 
+    }));
+    x += m[0].length + 1;
+  }
+
+  rc.style.width = (w * zooms[zi]) + 'px'; 
+  rc.style.height = (h * zooms[zi]) + 'px';
   $('zoomVal').textContent = zooms[zi] + 'x';
   const name = (text.toLowerCase().replace(/ /g, '_')) || 'gracz';
   
   $('downloadFileName').textContent = 'TimiCode-' + name + '.png';
   $('ymlOutput').value = `${name}:\n  font: minecraft:default\n  texture: ranks/${name}\n  ascent: 8\n  height: 9`;
 }
-
-// Przełączanie trybu
-document.querySelectorAll('[data-mode]').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('[data-mode]').forEach(b => b.classList.remove('active-fmt'));
-    btn.classList.add('active-fmt');
-    currentMode = btn.dataset.mode;
-    if(currentMode === 'envelope') {
-      $('subStyleGroup').style.display = 'none';
-    } else {
-      $('subStyleGroup').style.display = 'block';
-    }
-    drawRank();
-  });
-});
 
 // Przełączanie podstylów
 document.querySelectorAll('[data-style]').forEach(btn => {
