@@ -37,25 +37,27 @@ body.dark-theme {
 html { scroll-behavior: smooth; }
 body { background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; position: relative; }
 
-.watermark-bg {
+.wm-layer {
   position: fixed;
-  inset: -50%;
-  width: 200%;
-  height: 200%;
+  inset: -60%;
+  width: 220%;
+  height: 220%;
   pointer-events: none;
   z-index: 0;
   display: flex;
   flex-wrap: wrap;
   align-content: space-around;
   justify-content: space-around;
-  transform: rotate(-25deg);
-  opacity: 0.035;
-  font-size: 2.2rem;
   font-weight: 900;
   color: var(--text);
-  letter-spacing: 4px;
+  letter-spacing: 6px;
   text-transform: uppercase;
+  font-size: 1.8rem;
 }
+.wm-layer.l1 { transform: rotate(-25deg) translateY(-80px); opacity: 0.03; }
+.wm-layer.l2 { transform: rotate(-25deg) translateY(-20px) translateX(60px); opacity: 0.025; font-size: 1.5rem; }
+.wm-layer.l3 { transform: rotate(-25deg) translateY(40px) translateX(-40px); opacity: 0.03; font-size: 2rem; }
+.wm-layer.l4 { transform: rotate(-25deg) translateY(100px) translateX(100px); opacity: 0.02; font-size: 1.6rem; }
 
 .glow { position: absolute; pointer-events: none; z-index: 0; border-radius: 50%; }
 .glow.top { top: -120px; left: 50%; transform: translateX(-50%); width: 800px; height: 600px; background: radial-gradient(circle, rgba(59,130,246,.22), transparent 70%); }
@@ -105,12 +107,11 @@ footer { background: var(--card); border-top: 1px solid var(--border); padding: 
 </style>
 </head>
 <body>
-<div class="watermark-bg">
-  <span>TimiCode</span><span>TimiCode</span><span>TimiCode</span><span>TimiCode</span>
-  <span>TimiCode</span><span>TimiCode</span><span>TimiCode</span><span>TimiCode</span>
-  <span>TimiCode</span><span>TimiCode</span><span>TimiCode</span><span>TimiCode</span>
-  <span>TimiCode</span><span>TimiCode</span><span>TimiCode</span><span>TimiCode</span>
-</div>
+<div class="wm-layer l1"><span>TimiCode</span><span>TimiCode</span><span>TimiCode</span><span>TimiCode</span><span>TimiCode</span></div>
+<div class="wm-layer l2"><span>TimiCode</span><span>TimiCode</span><span>TimiCode</span><span>TimiCode</span><span>TimiCode</span></div>
+<div class="wm-layer l3"><span>TimiCode</span><span>TimiCode</span><span>TimiCode</span><span>TimiCode</span><span>TimiCode</span></div>
+<div class="wm-layer l4"><span>TimiCode</span><span>TimiCode</span><span>TimiCode</span><span>TimiCode</span><span>TimiCode</span></div>
+
 <div class="glow top"></div><div class="bg-pattern"></div>
 
 <nav>
