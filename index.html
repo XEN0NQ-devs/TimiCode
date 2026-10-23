@@ -42,26 +42,28 @@ body { background: var(--bg); color: var(--text); line-height: 1.6; min-height: 
 input, textarea, select { user-select: text; -webkit-user-select: text; }
 :focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
 
-/* Znak wodny w tle */
-.watermark-bg {
+/* 4 Gęste Warstwy Znaku Wodnego */
+.wm-layer {
   position: fixed;
-  inset: -50%;
-  width: 200%;
-  height: 200%;
+  inset: -60%;
+  width: 220%;
+  height: 220%;
   pointer-events: none;
   z-index: 0;
   display: flex;
   flex-wrap: wrap;
   align-content: space-around;
   justify-content: space-around;
-  transform: rotate(-25deg);
-  opacity: 0.035;
-  font-size: 2.2rem;
   font-weight: 900;
   color: var(--text);
-  letter-spacing: 4px;
+  letter-spacing: 6px;
   text-transform: uppercase;
+  font-size: 1.8rem;
 }
+.wm-layer.l1 { transform: rotate(-25deg) translateY(-80px); opacity: 0.03; }
+.wm-layer.l2 { transform: rotate(-25deg) translateY(-20px) translateX(60px); opacity: 0.025; font-size: 1.5rem; }
+.wm-layer.l3 { transform: rotate(-25deg) translateY(40px) translateX(-40px); opacity: 0.03; font-size: 2rem; }
+.wm-layer.l4 { transform: rotate(-25deg) translateY(100px) translateX(100px); opacity: 0.02; font-size: 1.6rem; }
 
 .glow { position: absolute; pointer-events: none; z-index: 0; border-radius: 50%; }
 .glow.top { top: -120px; left: 50%; transform: translateX(-50%); width: 800px; height: 600px; background: radial-gradient(circle, rgba(59,130,246,.22), transparent 70%); }
@@ -141,12 +143,11 @@ footer { background: var(--card); border-top: 1px solid var(--border); padding: 
 </style>
 </head>
 <body>
-<div class="watermark-bg">
-  <span>TimiCode</span><span>TimiCode</span><span>TimiCode</span><span>TimiCode</span>
-  <span>TimiCode</span><span>TimiCode</span><span>TimiCode</span><span>TimiCode</span>
-  <span>TimiCode</span><span>TimiCode</span><span>TimiCode</span><span>TimiCode</span>
-  <span>TimiCode</span><span>TimiCode</span><span>TimiCode</span><span>TimiCode</span>
-</div>
+<div class="wm-layer l1"><span>TimiCode</span><span>TimiCode</span><span>TimiCode</span><span>TimiCode</span><span>TimiCode</span></div>
+<div class="wm-layer l2"><span>TimiCode</span><span>TimiCode</span><span>TimiCode</span><span>TimiCode</span><span>TimiCode</span></div>
+<div class="wm-layer l3"><span>TimiCode</span><span>TimiCode</span><span>TimiCode</span><span>TimiCode</span><span>TimiCode</span></div>
+<div class="wm-layer l4"><span>TimiCode</span><span>TimiCode</span><span>TimiCode</span><span>TimiCode</span><span>TimiCode</span></div>
+
 <div class="glow top"></div><div class="glow mid"></div><div class="glow bot"></div><div class="bg-pattern"></div>
 
 <nav>
@@ -184,7 +185,7 @@ footer { background: var(--card); border-top: 1px solid var(--border); padding: 
     <div class="offer-grid">
       <div class="card"><div class="card-icon"><i class="fa-solid fa-plug"></i></div><h3>Pluginy</h3><p>Zaawansowane, wydajne i bezbłędne autorskie pluginy dopasowane do unikalnych potrzeb Twojego serwera.</p></div>
       <div class="card"><div class="card-icon"><i class="fa-solid fa-code"></i></div><h3>Skrypty</h3><p>Optymalne i lekkie skrypty urozmaicające rozgrywkę oraz mechaniki dla Twoich graczy.</p></div>
-      <div class="card"><div class="card-icon"><i class="fa-solid fa-paintbrush"></i></div><h3>Grafiki</h3><p>Bannery, logotypy, ikony do sklepu WWW oraz profesjonalne oprawy graficzne wyróżniające projekt.</p></div>
+      <div class="card"><div class="card-icon"><div style="background:var(--blue);width:16px;height:16px;border-radius:3px"></div></div><h3>Grafiki</h3><p>Bannery, logotypy, ikony do sklepu WWW oraz profesjonalne oprawy graficzne wyróżniające projekt.</p></div>
       <div class="card"><div class="card-icon"><i class="fa-solid fa-cubes"></i></div><h3>Mapy i Budowle</h3><p>Oryginalne budowle, dopracowane spawny i unikalne areny stworzone przez doświadczonych builderów.</p></div>
       <div class="card"><div class="card-icon"><i class="fa-brands fa-discord"></i></div><h3>Boty Discord</h3><p>Dedykowane boty integrujące serwer Discord z grą Minecraft, weryfikacje oraz automatyczne systemy ticketów.</p></div>
       <div class="card"><div class="card-icon"><i class="fa-solid fa-box-open"></i></div><h3>Kompletne Paczki</h3><p>Gotowe, skrupulatnie skonfigurowane i przetestowane paczki serwerowe pod dowolne tryby rozgrywki.</p></div>
