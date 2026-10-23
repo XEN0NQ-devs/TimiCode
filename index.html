@@ -6,46 +6,46 @@
 <title>TimiCode — Usługi & Narzędzia Minecraft</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet">
-<link rel="icon" type="image/png" href="https://imgur.com/cqKk2CQ.png">
+<link rel="icon" type="image/png" href="https://imgur.com/OLQakZt.png">
 <style>
 :root {
-  --logo: url('https://imgur.com/cqKk2CQ.png');
-  --bg: #f8f9fa;
+  --logo: url('https://imgur.com/OLQakZt.png');
+  --bg: #f8fafc;
   --card: #ffffff;
-  --text: #1e1e24;
-  --muted: #5a5a6e;
-  --red: #6c5ce7;
-  --red-glow: rgba(108, 92, 231, 0.35);
-  --red-dark: #5b4cc4;
+  --text: #0f172a;
+  --muted: #64748b;
+  --red: #3b82f6;
+  --red-glow: rgba(59, 130, 246, 0.35);
+  --red-dark: #2563eb;
   --border: #e2e8f0;
   --nav: rgba(255, 255, 255, 0.92);
-  --dot: rgba(108, 92, 231, 0.08);
-  --shadow: rgba(108, 92, 231, 0.08);
-  --input: #f1f3f9;
+  --dot: rgba(59, 130, 246, 0.08);
+  --shadow: rgba(59, 130, 246, 0.08);
+  --input: #f1f5f9;
 }
 
 body.dark-theme {
-  --bg: #0d0c1d;
-  --card: #16152b;
-  --text: #f1f2f6;
-  --muted: #a0a0b8;
-  --border: #2a284e;
-  --nav: rgba(13, 12, 29, 0.88);
+  --bg: #0b0f19;
+  --card: #111827;
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --border: #1e293b;
+  --nav: rgba(11, 15, 25, 0.88);
   --dot: rgba(255, 255, 255, 0.05);
   --shadow: rgba(0, 0, 0, 0.45);
   --input: rgba(0, 0, 0, 0.35);
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; transition: background-color .35s, color .35s, border-color .35s; }
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; transition: background-color .35s, color .35s, border-color .35s; user-select: none; -webkit-user-select: none; }
 html { scroll-behavior: smooth; }
 body { background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; position: relative; }
-input, textarea, select { user-select: text; }
+input, textarea, select { user-select: text; -webkit-user-select: text; }
 :focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
 
 .glow { position: absolute; pointer-events: none; z-index: 0; border-radius: 50%; }
-.glow.top { top: -120px; left: 50%; transform: translateX(-50%); width: 800px; height: 600px; background: radial-gradient(circle, rgba(108,92,231,.25), transparent 70%); }
-.glow.mid { top: 55%; right: -200px; width: 650px; height: 650px; background: radial-gradient(circle, rgba(0,206,201,.15), transparent 70%); }
-.glow.bot { bottom: -100px; left: -150px; width: 650px; height: 650px; background: radial-gradient(circle, rgba(108,92,231,.18), transparent 70%); }
+.glow.top { top: -120px; left: 50%; transform: translateX(-50%); width: 800px; height: 600px; background: radial-gradient(circle, rgba(59,130,246,.25), transparent 70%); }
+.glow.mid { top: 55%; right: -200px; width: 650px; height: 650px; background: radial-gradient(circle, rgba(14,165,233,.15), transparent 70%); }
+.glow.bot { bottom: -100px; left: -150px; width: 650px; height: 650px; background: radial-gradient(circle, rgba(59,130,246,.18), transparent 70%); }
 .bg-pattern { position: fixed; inset: 0; pointer-events: none; z-index: 0; background-image: radial-gradient(var(--dot) 1.5px, transparent 1.5px); background-size: 24px 24px; }
 
 nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: var(--nav); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); position: fixed; top: 0; left: 0; right: 0; z-index: 1000; gap: 15px; }
@@ -61,8 +61,6 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 #menuToggle { display: none; }
 
 .container { padding: 0 5%; max-width: 1200px; margin: 0 auto; width: 100%; flex: 1; position: relative; z-index: 1; }
-.container.page { padding-top: 120px; padding-bottom: 60px; }
-.container.narrow { max-width: 900px; }
 section { padding: 90px 0; scroll-margin-top: 70px; }
 
 .hero { min-height: 100vh; display: flex; align-items: center; justify-content: space-between; gap: 40px; padding: 100px 0 40px; }
@@ -74,18 +72,17 @@ section { padding: 90px 0; scroll-margin-top: 70px; }
 .btn-primary, .btn-secondary { padding: 14px 30px; border-radius: 10px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; }
 .btn-primary { background: var(--red); color: #fff; box-shadow: 0 4px 25px var(--red-glow); }
 .btn-primary:hover { background: var(--red-dark); }
-.btn-secondary { background: rgba(108, 92, 231, 0.08); border: 1px solid var(--border); color: var(--text); }
+.btn-secondary { background: rgba(59, 130, 246, 0.08); border: 1px solid var(--border); color: var(--text); }
 .btn-secondary:hover { border-color: var(--red); color: var(--red); }
 .hero-art { flex: 1; display: flex; justify-content: center; }
 .sigil { width: min(320px, 70vw); aspect-ratio: 1; border-radius: 50%; background: var(--logo) center/cover no-repeat; box-shadow: 0 0 60px var(--red-glow); animation: float 4s ease-in-out infinite; }
 @keyframes float { 50% { transform: translateY(-16px); } }
-@media (prefers-reduced-motion: reduce) { .sigil { animation: none; } * { transition: none !important; } }
 
 .section-title { text-align: center; font-size: 2.4rem; font-weight: 800; margin-bottom: 45px; }
 .offer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
 .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 32px 28px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 8px 24px var(--shadow); }
 .card:hover { border-color: var(--red); }
-.card-icon { width: 50px; height: 50px; background: rgba(108, 92, 231, 0.13); color: var(--red); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
+.card-icon { width: 50px; height: 50px; background: rgba(59, 130, 246, 0.13); color: var(--red); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
 .card h3 { font-size: 1.3rem; } .card p { color: var(--muted); font-size: .95rem; }
 .reviews-box { background: var(--card); border: 1px dashed var(--border); border-radius: 16px; padding: 50px 20px; text-align: center; max-width: 650px; margin: 0 auto; box-shadow: 0 8px 24px var(--shadow); }
 .reviews-box > i { font-size: 2rem; color: var(--red); margin-bottom: 12px; }
@@ -95,7 +92,7 @@ footer { background: var(--card); border-top: 1px solid var(--border); padding: 
 .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
 .footer-brand p { color: var(--muted); font-size: .92rem; margin-top: 12px; max-width: 320px; }
 .footer-socials { display: flex; gap: 10px; margin-top: 18px; }
-.social-btn { width: 38px; height: 38px; border-radius: 8px; background: rgba(108, 92, 231, 0.08); border: 1px solid var(--border); color: var(--text); display: flex; align-items: center; justify-content: center; text-decoration: none; }
+.social-btn { width: 38px; height: 38px; border-radius: 8px; background: rgba(59, 130, 246, 0.08); border: 1px solid var(--border); color: var(--text); display: flex; align-items: center; justify-content: center; text-decoration: none; }
 .social-btn:hover { color: var(--red); border-color: var(--red); }
 .footer-col h4 { font-size: 1rem; margin-bottom: 18px; }
 .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
@@ -130,6 +127,7 @@ footer { background: var(--card); border-top: 1px solid var(--border); padding: 
     <button class="icon-btn" id="menuToggle" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
   </div>
 </nav>
+
 <div class="container"><main>
   <section id="home" class="hero">
     <div class="hero-text">
@@ -175,8 +173,18 @@ footer { background: var(--card); border-top: 1px solid var(--border); padding: 
   </div>
   <div class="footer-bottom"><p>&copy; 2026 TimiCode. Wszystkie prawa zastrzeżone.</p></div>
 </footer>
+
 <script>
 (function(){
+  document.addEventListener('contextmenu', e => e.preventDefault());
+  document.addEventListener('keydown', e => {
+    if (e.key === 'F12' || 
+        (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) || 
+        (e.ctrlKey && e.key === 'u')) {
+      e.preventDefault();
+    }
+  });
+
   const body = document.body, icon = document.getElementById('themeIcon');
   function setIcon(){ if(icon) icon.className = body.classList.contains('dark-theme') ? 'fa-solid fa-sun' : 'fa-solid fa-moon'; }
   try { if(localStorage.getItem('timi_theme') === 'dark') body.classList.add('dark-theme'); } catch(e){}
