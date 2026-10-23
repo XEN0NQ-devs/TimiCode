@@ -6,40 +6,39 @@
 <title>Regulamin — TimiCode</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet">
-<link rel="icon" type="image/png" href="https://imgur.com/cqKk2CQ.png">
+<link rel="icon" type="image/png" href="https://imgur.com/OLQakZt.png">
 <style>
 :root {
-  --logo: url('https://imgur.com/cqKk2CQ.png');
-  --bg: #f8f9fa;
+  --logo: url('https://imgur.com/OLQakZt.png');
+  --bg: #f8fafc;
   --card: #ffffff;
-  --text: #1e1e24;
-  --muted: #5a5a6e;
-  --red: #6c5ce7;
-  --red-glow: rgba(108, 92, 231, 0.35);
-  --red-dark: #5b4cc4;
+  --text: #0f172a;
+  --muted: #64748b;
+  --red: #3b82f6;
+  --red-glow: rgba(59, 130, 246, 0.35);
   --border: #e2e8f0;
   --nav: rgba(255, 255, 255, 0.92);
-  --dot: rgba(108, 92, 231, 0.08);
-  --shadow: rgba(108, 92, 231, 0.08);
+  --dot: rgba(59, 130, 246, 0.08);
+  --shadow: rgba(59, 130, 246, 0.08);
 }
 
 body.dark-theme {
-  --bg: #0d0c1d;
-  --card: #16152b;
-  --text: #f1f2f6;
-  --muted: #a0a0b8;
-  --border: #2a284e;
-  --nav: rgba(13, 12, 29, 0.88);
+  --bg: #0b0f19;
+  --card: #111827;
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --border: #1e293b;
+  --nav: rgba(11, 15, 25, 0.88);
   --dot: rgba(255, 255, 255, 0.05);
   --shadow: rgba(0, 0, 0, 0.45);
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; transition: background-color .35s, color .35s, border-color .35s; }
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; transition: background-color .35s, color .35s, border-color .35s; user-select: none; -webkit-user-select: none; }
 html { scroll-behavior: smooth; }
 body { background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; position: relative; }
 
 .glow { position: absolute; pointer-events: none; z-index: 0; border-radius: 50%; }
-.glow.top { top: -120px; left: 50%; transform: translateX(-50%); width: 800px; height: 600px; background: radial-gradient(circle, rgba(108,92,231,.25), transparent 70%); }
+.glow.top { top: -120px; left: 50%; transform: translateX(-50%); width: 800px; height: 600px; background: radial-gradient(circle, rgba(59,130,246,.25), transparent 70%); }
 .bg-pattern { position: fixed; inset: 0; pointer-events: none; z-index: 0; background-image: radial-gradient(var(--dot) 1.5px, transparent 1.5px); background-size: 24px 24px; }
 
 nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: var(--nav); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); position: fixed; top: 0; left: 0; right: 0; z-index: 1000; gap: 15px; }
@@ -69,7 +68,7 @@ footer { background: var(--card); border-top: 1px solid var(--border); padding: 
 .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
 .footer-brand p { color: var(--muted); font-size: .92rem; margin-top: 12px; max-width: 320px; }
 .footer-socials { display: flex; gap: 10px; margin-top: 18px; }
-.social-btn { width: 38px; height: 38px; border-radius: 8px; background: rgba(108, 92, 231, 0.08); border: 1px solid var(--border); color: var(--text); display: flex; align-items: center; justify-content: center; text-decoration: none; }
+.social-btn { width: 38px; height: 38px; border-radius: 8px; background: rgba(59, 130, 246, 0.08); border: 1px solid var(--border); color: var(--text); display: flex; align-items: center; justify-content: center; text-decoration: none; }
 .social-btn:hover { color: var(--red); border-color: var(--red); }
 .footer-col h4 { font-size: 1rem; margin-bottom: 18px; }
 .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
@@ -106,12 +105,10 @@ footer { background: var(--card); border-top: 1px solid var(--border); padding: 
 <div class="container page">
   <h1 class="page-title">Regulamin Discord</h1>
   <div class="rules-card">
-    
     <div class="rule-item">
       <h3><i class="fa-solid fa-circle-info"></i> §1. Postanowienia ogólne</h3>
       <p>Niniejszy regulamin określa zasady panujące na serwerze Discord TimiCode.</p>
     </div>
-
     <div class="rule-item">
       <h3><i class="fa-solid fa-users"></i> §2. Zasady korzystania z serwera</h3>
       <p style="margin-bottom: 8px;">Szanuj innych użytkowników oraz członków administracji.</p>
@@ -126,7 +123,6 @@ footer { background: var(--card); border-top: 1px solid var(--border); padding: 
         <li>pingowania administracji (kara: mute 1 godzina).</li>
       </ul>
     </div>
-
     <div class="rule-item">
       <h3><i class="fa-solid fa-headset"></i> §3. Tickety i pomoc techniczna</h3>
       <p>Wsparcie techniczne odbywa się wyłącznie poprzez system ticketów.</p>
@@ -139,7 +135,6 @@ footer { background: var(--card); border-top: 1px solid var(--border); padding: 
       </ul>
       <p style="margin-top: 8px;">Administracja może zamknąć ticket po rozwiązaniu zgłoszenia lub w przypadku braku odpowiedzi użytkownika.</p>
     </div>
-
     <div class="rule-item">
       <h3><i class="fa-solid fa-gavel"></i> §4. Kary</h3>
       <p>Za naruszenie regulaminu administracja może zastosować odpowiednie środki, w szczególności:</p>
@@ -153,7 +148,6 @@ footer { background: var(--card); border-top: 1px solid var(--border); padding: 
       <p style="margin-top: 8px;">Rodzaj kary zależy od wagi naruszenia i historii użytkownika.</p>
       <p>Próby obchodzenia nałożonych kar mogą skutkować ich wydłużeniem lub trwałą blokadą.</p>
     </div>
-
     <div class="rule-item">
       <h3><i class="fa-solid fa-cart-shopping"></i> §5. Regulamin zakupów</h3>
       <ul>
@@ -163,14 +157,12 @@ footer { background: var(--card); border-top: 1px solid var(--border); padding: 
         <li>Zakaz udostępniania produktów autorstwa TimiCode (za złamanie: permban).</li>
       </ul>
     </div>
-
     <div class="rule-item">
       <h3><i class="fa-solid fa-flag"></i> §6. Postanowienia końcowe</h3>
       <p>Administracja zastrzega sobie prawo do podejmowania decyzji w sytuacjach nieopisanych w regulaminie, jeżeli jest to konieczne dla zachowania porządku i bezpieczeństwa serwera.</p>
       <p>Regulamin może zostać zmieniony w dowolnym momencie. Aktualna wersja będzie zawsze dostępna na serwerze Discord oraz stronie WWW.</p>
       <p style="margin-top: 12px; font-weight: bold; color: var(--red); text-align: center;">Dziękujemy za tworzenie przyjaznej społeczności TimiCode!</p>
     </div>
-
   </div>
 </div>
 
@@ -194,6 +186,15 @@ footer { background: var(--card); border-top: 1px solid var(--border); padding: 
 
 <script>
 (function(){
+  document.addEventListener('contextmenu', e => e.preventDefault());
+  document.addEventListener('keydown', e => {
+    if (e.key === 'F12' || 
+        (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) || 
+        (e.ctrlKey && e.key === 'u')) {
+      e.preventDefault();
+    }
+  });
+
   const body = document.body, icon = document.getElementById('themeIcon');
   function setIcon(){ if(icon) icon.className = body.classList.contains('dark-theme') ? 'fa-solid fa-sun' : 'fa-solid fa-moon'; }
   try { if(localStorage.getItem('timi_theme') === 'dark') body.classList.add('dark-theme'); } catch(e){}
