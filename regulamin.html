@@ -14,8 +14,8 @@
   --card: #ffffff;
   --text: #0f172a;
   --muted: #64748b;
-  --red: #3b82f6;
-  --red-glow: rgba(59, 130, 246, 0.35);
+  --blue: #3b82f6;
+  --blue-glow: rgba(59, 130, 246, 0.35);
   --border: #e2e8f0;
   --nav: rgba(255, 255, 255, 0.92);
   --dot: rgba(59, 130, 246, 0.08);
@@ -37,20 +37,40 @@ body.dark-theme {
 html { scroll-behavior: smooth; }
 body { background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; position: relative; }
 
+.watermark-bg {
+  position: fixed;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  z-index: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+  justify-content: space-around;
+  transform: rotate(-25deg);
+  opacity: 0.035;
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--text);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
 .glow { position: absolute; pointer-events: none; z-index: 0; border-radius: 50%; }
-.glow.top { top: -120px; left: 50%; transform: translateX(-50%); width: 800px; height: 600px; background: radial-gradient(circle, rgba(59,130,246,.25), transparent 70%); }
+.glow.top { top: -120px; left: 50%; transform: translateX(-50%); width: 800px; height: 600px; background: radial-gradient(circle, rgba(59,130,246,.22), transparent 70%); }
 .bg-pattern { position: fixed; inset: 0; pointer-events: none; z-index: 0; background-image: radial-gradient(var(--dot) 1.5px, transparent 1.5px); background-size: 24px 24px; }
 
 nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: var(--nav); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); position: fixed; top: 0; left: 0; right: 0; z-index: 1000; gap: 15px; }
-.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; font-size: 1.45rem; font-weight: 900; color: var(--text); letter-spacing: -.5px; }
-.logo .mark { width: 40px; height: 40px; border-radius: 50%; background: var(--logo) center/cover no-repeat; box-shadow: 0 0 18px var(--red-glow); flex-shrink: 0; }
-.logo .r { color: var(--red); }
+.logo { display: flex; align-items: center; gap: 12px; text-decoration: none; font-size: 1.45rem; font-weight: 900; color: var(--text); letter-spacing: -.5px; }
+.logo img { width: 42px; height: 42px; object-fit: contain; filter: drop-shadow(0 0 10px var(--blue-glow)); }
+.logo .r { color: var(--blue); }
 .nav-menu { display: flex; list-style: none; gap: 16px; align-items: center; }
 .nav-link { color: var(--muted); text-decoration: none; font-weight: 600; font-size: .92rem; padding: 6px 10px; border-radius: 6px; }
-.nav-link:hover, .nav-link.active { color: var(--red); }
+.nav-link:hover, .nav-link.active { color: var(--blue); }
 .nav-right { display: flex; gap: 8px; }
 .icon-btn { background: var(--card); border: 1px solid var(--border); color: var(--text); width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1.05rem; }
-.icon-btn:hover { border-color: var(--red); color: var(--red); }
+.icon-btn:hover { border-color: var(--blue); color: var(--blue); }
 #menuToggle { display: none; }
 
 .container { padding: 0 5%; max-width: 1000px; margin: 0 auto; width: 100%; flex: 1; position: relative; z-index: 1; }
@@ -58,21 +78,21 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 
 .page-title { font-size: 2.8rem; font-weight: 900; margin-bottom: 25px; text-align: center; }
 .rules-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 35px; display: flex; flex-direction: column; gap: 25px; box-shadow: 0 8px 24px var(--shadow); }
-.rule-item h3 { font-size: 1.25rem; color: var(--red); margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+.rule-item h3 { font-size: 1.25rem; color: var(--blue); margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
 .rule-item p, .rule-item ul { color: var(--muted); font-size: .98rem; line-height: 1.7; }
 .rule-item ul { list-style: none; padding-left: 10px; }
 .rule-item ul li { margin-bottom: 6px; position: relative; }
-.rule-item ul li::before { content: "» "; color: var(--red); font-weight: bold; }
+.rule-item ul li::before { content: "» "; color: var(--blue); font-weight: bold; }
 
 footer { background: var(--card); border-top: 1px solid var(--border); padding: 60px 5% 30px; position: relative; z-index: 1; margin-top: 50px; }
 .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
 .footer-brand p { color: var(--muted); font-size: .92rem; margin-top: 12px; max-width: 320px; }
 .footer-socials { display: flex; gap: 10px; margin-top: 18px; }
 .social-btn { width: 38px; height: 38px; border-radius: 8px; background: rgba(59, 130, 246, 0.08); border: 1px solid var(--border); color: var(--text); display: flex; align-items: center; justify-content: center; text-decoration: none; }
-.social-btn:hover { color: var(--red); border-color: var(--red); }
+.social-btn:hover { color: var(--blue); border-color: var(--blue); }
 .footer-col h4 { font-size: 1rem; margin-bottom: 18px; }
 .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-.footer-col a { color: var(--muted); text-decoration: none; font-size: .9rem; } .footer-col a:hover { color: var(--red); }
+.footer-col a { color: var(--muted); text-decoration: none; font-size: .9rem; } .footer-col a:hover { color: var(--blue); }
 .footer-bottom { text-align: center; padding-top: 25px; border-top: 1px solid var(--border); color: var(--muted); font-size: .88rem; }
 
 @media (max-width: 992px) {
@@ -85,16 +105,23 @@ footer { background: var(--card); border-top: 1px solid var(--border); padding: 
 </style>
 </head>
 <body>
+<div class="watermark-bg">
+  <span>TimiCode</span><span>TimiCode</span><span>TimiCode</span><span>TimiCode</span>
+  <span>TimiCode</span><span>TimiCode</span><span>TimiCode</span><span>TimiCode</span>
+  <span>TimiCode</span><span>TimiCode</span><span>TimiCode</span><span>TimiCode</span>
+  <span>TimiCode</span><span>TimiCode</span><span>TimiCode</span><span>TimiCode</span>
+</div>
 <div class="glow top"></div><div class="bg-pattern"></div>
+
 <nav>
-  <a href="index.html" class="logo"><span class="mark" aria-hidden="true"></span><span>Timi<span class="r">Code</span></span></a>
+  <a href="index.html" class="logo"><img src="https://imgur.com/OLQakZt.png" alt="TimiCode"><span>Timi<span class="r">Code</span></span></a>
   <ul class="nav-menu">
     <li><a href="index.html#home" class="nav-link">Strona główna</a></li>
     <li><a href="index.html#oferta" class="nav-link">Oferta</a></li>
     <li><a href="index.html#opinie" class="nav-link">Opinie</a></li>
     <li><a href="narzedzia.html" class="nav-link">Narzędzia</a></li>
     <li><a href="regulamin.html" class="nav-link active">Regulamin</a></li>
-    <li><a href="https://discord.gg/rxRZdvZpW" target="_blank" rel="noopener" class="nav-link">Discord <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:.75rem"></i></a></li>
+    <li><a href="https://discord.gg/NdhcVsWb9" target="_blank" rel="noopener" class="nav-link">Discord <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:.75rem"></i></a></li>
   </ul>
   <div class="nav-right">
     <button class="icon-btn" id="themeToggle" aria-label="Zmień motyw"><i class="fa-solid fa-moon" id="themeIcon"></i></button>
@@ -161,7 +188,7 @@ footer { background: var(--card); border-top: 1px solid var(--border); padding: 
       <h3><i class="fa-solid fa-flag"></i> §6. Postanowienia końcowe</h3>
       <p>Administracja zastrzega sobie prawo do podejmowania decyzji w sytuacjach nieopisanych w regulaminie, jeżeli jest to konieczne dla zachowania porządku i bezpieczeństwa serwera.</p>
       <p>Regulamin może zostać zmieniony w dowolnym momencie. Aktualna wersja będzie zawsze dostępna na serwerze Discord oraz stronie WWW.</p>
-      <p style="margin-top: 12px; font-weight: bold; color: var(--red); text-align: center;">Dziękujemy za tworzenie przyjaznej społeczności TimiCode!</p>
+      <p style="margin-top: 12px; font-weight: bold; color: var(--blue); text-align: center;">Dziękujemy za tworzenie przyjaznej społeczności TimiCode!</p>
     </div>
   </div>
 </div>
@@ -169,16 +196,16 @@ footer { background: var(--card); border-top: 1px solid var(--border); padding: 
 <footer>
   <div class="footer-container">
     <div class="footer-brand">
-      <a href="index.html" class="logo"><span class="mark" aria-hidden="true"></span><span>Timi<span class="r">Code</span></span></a>
+      <a href="index.html" class="logo"><img src="https://imgur.com/OLQakZt.png" alt="TimiCode"><span>Timi<span class="r">Code</span></span></a>
       <p>Profesjonalne rozwiązania dla Twojego serwera Minecraft.</p>
       <div class="footer-socials">
-        <a href="https://discord.gg/rxRZdvZpW" target="_blank" rel="noopener" class="social-btn" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+        <a href="https://discord.gg/NdhcVsWb9" target="_blank" rel="noopener" class="social-btn" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
         <a href="#" class="social-btn" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
         <a href="#" class="social-btn" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
       </div>
     </div>
     <div class="footer-col"><h4>Nawigacja</h4><ul><li><a href="index.html#oferta">Oferta</a></li><li><a href="index.html#opinie">Opinie</a></li><li><a href="narzedzia.html">Narzędzia</a></li></ul></div>
-    <div class="footer-col"><h4>Social</h4><ul><li><a href="https://discord.gg/rxRZdvZpW" target="_blank" rel="noopener">Discord</a></li><li><a href="#">YouTube</a></li><li><a href="#">TikTok</a></li></ul></div>
+    <div class="footer-col"><h4>Social</h4><ul><li><a href="https://discord.gg/NdhcVsWb9" target="_blank" rel="noopener">Discord</a></li><li><a href="#">YouTube</a></li><li><a href="#">TikTok</a></li></ul></div>
     <div class="footer-col"><h4>Dokumenty</h4><ul><li><a href="regulamin.html">Regulamin</a></li><li><a href="#">Polityka prywatności</a></li></ul></div>
   </div>
   <div class="footer-bottom"><p>&copy; 2026 TimiCode. Wszystkie prawa zastrzeżone.</p></div>
